@@ -1,0 +1,26 @@
+#!/bin/bash
+
+#Autor: Harold Espinoza
+#Fecha: Viernes, 17/05/2019
+#Descripción: Script para generación de iconos para archivo de manifiesto de una PWA, a partir, de una imagen
+#Contacto: haroldesptru@gmail.com
+
+if [ $# -gt 0 ]; then
+		echo "Creating images..."
+		mkdir manifest
+		convert -density 300 $1 +write mpr:img +delete \
+		\( mpr:img -resize 1024x1024 +write manifest/icon_1024x1024.png \) \
+		\( mpr:img -resize 512x512 +write manifest/icon_512x512.png \) \
+		\( mpr:img -resize 384x384 +write manifest/icon_384X384.png \) \
+		\( mpr:img -resize 256x256 +write manifest/icon_256x256.png \) \
+		\( mpr:img -resize 192x192 +write manifest/icon_192x192.png \) \
+		\( mpr:img -resize 128x128 +write manifest/icon_128x128.png \) \
+		\( mpr:img -resize 96x96 +write manifest/icon_96x96.png \) \
+		\( mpr:img -resize 64x64 +write manifest/icon_64x64.png \) \
+		\( mpr:img -resize 32x32 +write manifest/icon_32x32.png \) \
+		\( mpr:img -resize 16x16 +write manifest/icon_16x16.png \)
+
+		echo "End process..."
+	else
+		echo "No se ingresaron parámetros. Ejecución finalizada."
+fi
